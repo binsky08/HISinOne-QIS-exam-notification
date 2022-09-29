@@ -9,19 +9,21 @@ term_handler() {
 
 if [ ! -f /data/crontab ]; then
   randomMinute=$(( ( RANDOM % 60 ) + 1 ))
-  echo -e "$randomMinute */2 * * * python3 /workingdir/crawl.py -c /data/myHisConfig.cfg\n" > /data/crontab
+  echo -e "$randomMinute */2 * * * /workingdir/crawl.py -c /data/myHisConfig.cfg\n" > /data/crontab
   chmod 777 /data/crontab
 else
   crontab /data/crontab
 fi
 
+chmod +x /workingdir/crawl.py
+
 if [ ! -f /data/myHisConfig.cfg ]; then
-  python3 /workingdir/crawl.py -c /data/myHisConfig.cfg
+  /workingdir/crawl.py -c /data/myHisConfig.cfg
   chmod 777 /data/myHisConfig.cfg
   echo "Konfigurationsdatei in /data/myHisConfig.cfg wurde erstellt"
   exit 0
 else
-  python3 /workingdir/crawl.py -c /data/myHisConfig.cfg
+  /workingdir/crawl.py -c /data/myHisConfig.cfg
 fi
 
 service cron start
