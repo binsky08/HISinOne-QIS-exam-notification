@@ -1,3 +1,9 @@
+> # Deprecated
+> Seit dem QIS Update im Sommer 2023 ist die Parserimplementierung nicht mehr nutzbar und bedarf einer Anpassung.
+> Da für mich und in meinem Umfeld kein Bedarf mehr an der Fortführung des Projekts besteht, wird dieses Repository derzeit nicht weiter betreut.
+> 
+> Feel free 2 fork 🍴
+
 # HISinOne QIS - Parser für Prüfungsleistungen
 
 Basiert auf dem Repository: [https://github.com/MrKrisKrisu/HISinOne-QIS-exam-notification](https://github.com/MrKrisKrisu/HISinOne-QIS-exam-notification)
@@ -76,6 +82,8 @@ Optional kann die Installation der Abhängigkeiten und Bauen der ausführbaren D
 Beachte, dass dabei die Abhängigkeiten direkt durch deinen Benutzer in deinem System installiert werden. Python muss bereits vorhanden sein
 
 ## Starten mit Docker
+> Todo: irgendwas im Container ist eventuell kaputt gegangen
+
 ### Eigenen Container bauen (optional)
 `docker build -t his-in-one_qis_exam-notification .`
 
