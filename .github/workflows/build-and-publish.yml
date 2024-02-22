@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 jobs:
   # define job to build and publish docker image
   build-and-push-docker-image:
@@ -47,3 +48,20 @@ jobs:
           push: true
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+  build-and-publish :
+    name: Build crawl file
+    # run only when code is compiling and tests are passing
+    runs-on: ubuntu-latest
+
+    # steps to perform in the job
+    steps:
+      - name: "Build:checkout"
+        uses: actions/checkout@v2
+      - name: Run runtime build script
+        run: sudo linux_build_env/build.sh
+      - name: Run runtime build script
+        run: sudo linux_build_env/package.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: crawl
+          path: dist/crawl
